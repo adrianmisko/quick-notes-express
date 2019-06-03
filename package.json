@@ -22,6 +22,7 @@
     "@types/sequelize": "^4.28.3",
     "@types/strong-error-handler": "^2.3.0",
     "@types/validator": "^10.11.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
