@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/bluebird": "^3.5.27",
     "@types/sequelize": "^4.28.3",
+    "@types/strong-error-handler": "^2.3.0",
     "@types/validator": "^10.11.0",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
@@ -28,7 +29,8 @@
     "pg-hstore": "^2.3.2",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.8.7",
-    "sequelize-typescript": "^1.0.0-beta.3"
+    "sequelize-typescript": "^1.0.0-beta.3",
+    "strong-error-handler": "^3.2.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
