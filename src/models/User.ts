@@ -23,7 +23,7 @@ class User extends Model {
     public updatedAt!: Date;
 
     @Column
-    private password!: string;
+    private passwordHash!: string;
 
 }
 
