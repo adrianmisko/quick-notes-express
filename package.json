@@ -18,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/bluebird": "^3.5.27",
     "@types/sequelize": "^4.28.3",
     "@types/strong-error-handler": "^2.3.0",
