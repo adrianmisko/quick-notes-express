@@ -1,8 +1,23 @@
-import { Column, CreatedAt, HasMany, Model, PrimaryKey, Table, UpdatedAt } from "sequelize-typescript";
+import * as bcrypt from "bcryptjs";
+import {
+    BeforeCreate, BeforeUpdate,
+    Column,
+    CreatedAt,
+    HasMany,
+    Model,
+    PrimaryKey,
+    Table,
+    UpdatedAt
+} from "sequelize-typescript";
 import Note from "./Note";
 
 @Table
 class User extends Model {
+
+    @BeforeCreate
+    public static async generatePasswordHash(instance: User) {
+        instance.passwordHash = await bcrypt.hash(instance.passwordHash, 10);
+    }
 
     @PrimaryKey
     @Column
@@ -25,6 +40,9 @@ class User extends Model {
     @Column
     private passwordHash!: string;
 
+    public async checkPassword(password: string): Promise<boolean> {
+        return bcrypt.compare(password, this.passwordHash);
+    }
 }
 
 export default User;
