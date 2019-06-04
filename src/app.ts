@@ -2,7 +2,7 @@ import * as bodyParser from "body-parser";
 import express from "express";
 import path from "path";
 import errorhandler from "strong-error-handler";
-import { notes } from "./routes/notes";
+import { users } from "./routes/users";
 
 const app = express();
 
@@ -22,9 +22,9 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (request, response) => {
-    response.redirect("/notes");
+    response.redirect("/users");
 });
-app.use("/notes", notes);
+app.use("/api/users", users);
 
 app.use(errorhandler({
     debug: process.env.ENV !== "prod",
