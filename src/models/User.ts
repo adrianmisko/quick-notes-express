@@ -1,6 +1,6 @@
 import * as bcrypt from "bcryptjs";
 import {
-    BeforeCreate, BeforeUpdate,
+    BeforeCreate,
     Column,
     CreatedAt,
     HasMany,
@@ -9,9 +9,19 @@ import {
     Table,
     UpdatedAt
 } from "sequelize-typescript";
+import {DefaultScope, Scopes} from "sequelize-typescript/dist/scopes";
 import Note from "./Note";
 
 @Table
+@DefaultScope({
+    attributes: ["email", "name", "createdAt", "updatedAt"]
+})
+@Scopes({
+    withNotes: {
+        attributes: ["email", "name", "createdAt", "updatedAt"],
+        include: [() => Note],
+    },
+})
 class User extends Model {
 
     @BeforeCreate

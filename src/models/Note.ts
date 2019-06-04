@@ -9,19 +9,19 @@ import {
     Table,
     UpdatedAt
 } from "sequelize-typescript";
+import { DefaultScope } from "sequelize-typescript/dist/scopes";
 import User from "./User";
 
 @Table
+@DefaultScope({
+    attributes: ["id", "title", "content", "createdAt", "updatedAt"]
+})
 class Note extends Model<Note> {
 
     @PrimaryKey
     @AutoIncrement
     @Column
     public id!: number;
-
-    @ForeignKey(() => User)
-    @Column
-    public userEmail!: string;
 
     @BelongsTo(() => User)
     public owner!: User;
@@ -39,6 +39,10 @@ class Note extends Model<Note> {
     @UpdatedAt
     @Column
     public updatedAt!: Date;
+
+    @ForeignKey(() => User)
+    @Column
+    public userEmail!: string;
 
 }
 
