@@ -14,13 +14,16 @@ import Note from "./Note";
 
 @Table
 @DefaultScope({
-    attributes: ["email", "name", "createdAt", "updatedAt"]
+    attributes: ["email", "name", "createdAt", "updatedAt", "passwordHash"]
 })
 @Scopes({
     withNotes: {
         attributes: ["email", "name", "createdAt", "updatedAt"],
         include: [() => Note],
     },
+    json: {
+        attributes: ["email", "name", "createdAt", "updatedAt"]
+    }
 })
 class User extends Model {
 
@@ -48,7 +51,7 @@ class User extends Model {
     public updatedAt!: Date;
 
     @Column
-    private passwordHash!: string;
+    public passwordHash!: string;
 
     public async checkPassword(password: string): Promise<boolean> {
         return bcrypt.compare(password, this.passwordHash);
